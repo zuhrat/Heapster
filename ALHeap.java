@@ -89,7 +89,7 @@ public class ALHeap {
 	    //pinpoint parent
 	    parentPos = (addValPos-1) / 2;
 
-	    if ( addVal.compareTo(_heap.get(parentPos)) < 0 ) {//addVal < parent
+	    if ( addVal.compareTo(_heap.get(parentPos)) > 0 ) {//addVal < parent
 		swap( addValPos, parentPos );
 		addValPos = parentPos;
 	    }
@@ -135,7 +135,7 @@ public class ALHeap {
 	    if ( minChildPos == -1 ) 
 		break;
 	    //if i am less than my least child, then i've walked far enough
-	    else if ( foo.compareTo( _heap.get(minChildPos) ) <= 0 ) 
+	    else if ( foo.compareTo( _heap.get(minChildPos) ) >= 0 ) 
 		break;
 	    //if i am > least child, swap with that child
 	    else {
@@ -167,7 +167,7 @@ public class ALHeap {
 	else if ( rc >= _heap.size() )
 	    retVal = lc;
 	//have 2 children, so compare to find least 
-	else if ( _heap.get(lc).compareTo(_heap.get(rc)) < 0 )
+	else if ( _heap.get(lc).compareTo(_heap.get(rc)) > 0 )
 	    retVal = lc;
 	else
 	    retVal = rc;
@@ -178,7 +178,7 @@ public class ALHeap {
 
     //************ aux helper fxns ***************
     private Integer minOf( Integer a, Integer b ) {
-	if ( a.compareTo(b) < 0 )
+	if ( a.compareTo(b) > 0 )
 	    return a;
 	else
 	    return b;
