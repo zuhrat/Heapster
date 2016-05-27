@@ -20,7 +20,8 @@ public class RunMed {
      *****************************************************/
     public RunMed() 
     { 
-
+        leftHeap = new ALMaxHeap();
+        rightHeap = new ALMinHeap();
     }//O(1)
 
 
@@ -30,7 +31,15 @@ public class RunMed {
      *****************************************************/
     public double getMedian() 
     {
-
+        if (leftHeap.size() == rightHeap.size()) {
+            return ( leftHeap.peekMax() + rightHeap.peekMin() ) / 2 ;
+        }
+        else if ( leftHeap.size() > rightHeap.size() ) {
+            return leftHeap.peekMax();
+        }
+        else {
+            return rightHeap.peekMin();
+        }        
     }//O(1)
 
 
@@ -41,17 +50,33 @@ public class RunMed {
      *                getMedian() can run in constant time
      *****************************************************/
     public void insert( int addVal )
-    {   
+    {  
+        if (rightHeap.size() == 0 || addVal > rightHeap.peekMin() ) 
+            rightHeap.add(addVal);
+        else
+            leftHeap.add(addVal);
+
+     balance();
+
      }//O(?)
 
 
-
+     public void balance(){
+        if ( leftHeap.size()-rightHeap.size() > 1 ) 
+            rightHeap.add( leftHeap.removeMax() );
+        else if ( rightHeap.size()-leftHeap.size() > 1 ) 
+            leftHeap.add( rightHeap.removeMin() );
+     }
     /*****************************************************
      * boolean isEmpty()  ---  tells whether a median may be calculated
      * postcondition: dataset structure unchanged
      *****************************************************/
     public boolean isEmpty() 
     {
+
+    if (leftHeap.size() == 0 && rightHeap.size() == 0)
+        return true;
+    return false;
 
     }//O(?)
 
@@ -60,7 +85,7 @@ public class RunMed {
     //main method for testing
     public static void main( String[] args ) {
 
-	/*~~~V~~~~~~~~~~~~move~me~down~~~~~~~~~~~~~V~~~
+	
         RunMed med = new RunMed();
 
         med.insert(1);
@@ -73,7 +98,7 @@ public class RunMed {
 	System.out.println( med.getMedian() ); //4
         med.insert(9);
 	System.out.println( med.getMedian() ); //5
-	~~~~~|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|~~~*/
+
 
     }//end main()
 

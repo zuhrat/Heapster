@@ -13,7 +13,7 @@ public class ALMinHeap {
     /*****************************************************
      * default constructor  ---  inits empty heap
      *****************************************************/
-    public ALHeap() 
+    public ALMinHeap() 
     { 
 	_heap = new ArrayList<Integer>();
     }
@@ -174,7 +174,9 @@ public class ALMinHeap {
 	return retVal;
     }//O(1)
 
-
+    public int size(){
+    	return _heap.size();
+    }
 
     //************ aux helper fxns ***************
     private Integer minOf( Integer a, Integer b ) {
@@ -194,7 +196,7 @@ public class ALMinHeap {
 
     //main method for testing
     public static void main( String[] args ) {
-
+/*
 	ALMinHeap pile = new ALMinHeap();
 
 	pile.add(2);
@@ -240,6 +242,7 @@ public class ALMinHeap {
 	System.out.println(pile);
 	System.out.println("removing " + pile.removeMin() + "...");
 	System.out.println(pile);
+	*/
     }//end main()
 
 }//end class ALHeap

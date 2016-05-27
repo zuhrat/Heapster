@@ -5,7 +5,7 @@
 
 import java.util.ArrayList;
 
-public class ALHeap {
+public class ALMaxHeap {
 
     //instance vars
     private ArrayList<Integer> _heap; //underlying container is array of Integers
@@ -13,7 +13,7 @@ public class ALHeap {
     /*****************************************************
      * default constructor  ---  inits empty heap
      *****************************************************/
-    public ALHeap() 
+    public ALMaxHeap() 
     { 
 	_heap = new ArrayList<Integer>();
     }
@@ -62,7 +62,7 @@ public class ALHeap {
       * Returns min value in heap
       * Postcondition: Heap remains unchanged.
       *****************************************************/
-    public Integer peekMin() { 
+    public Integer peekMax() { 
 	if ( _heap.size() < 1 )
 	    return null;
 	else
@@ -105,13 +105,13 @@ public class ALHeap {
      * Removes and returns least element in heap.
      * Postcondition: Tree maintains heap property.
      *****************************************************/
-    public Integer removeMin() {
+    public Integer removeMax() {
 
 	if ( _heap.size() == 0 ) 
 	    return null;
 
 	//store root value for return at end of fxn
-	Integer retVal = peekMin();
+	Integer retVal = peekMax();
 
 	//store val about to be swapped into root
 	Integer foo = _heap.get( _heap.size() - 1);
@@ -174,7 +174,9 @@ public class ALHeap {
 	return retVal;
     }//O(1)
 
-
+    public int size(){
+    	return _heap.size();
+    }
 
     //************ aux helper fxns ***************
     private Integer minOf( Integer a, Integer b ) {
@@ -194,7 +196,7 @@ public class ALHeap {
 
     //main method for testing
     public static void main( String[] args ) {
-
+/*
 	ALHeap pile = new ALHeap();
 
 	pile.add(2);
@@ -240,6 +242,7 @@ public class ALHeap {
 	System.out.println(pile);
 	System.out.println("removing " + pile.removeMin() + "...");
 	System.out.println(pile);
+	*/
     }//end main()
 
 }//end class ALHeap
